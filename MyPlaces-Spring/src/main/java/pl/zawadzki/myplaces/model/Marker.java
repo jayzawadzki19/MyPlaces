@@ -17,7 +17,7 @@ public class Marker {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private Long markerId;
 
     @NotBlank(message = "Latitude can not be blank")
     private double latitude;
@@ -30,6 +30,8 @@ public class Marker {
 
     private String description;
 
+    private Long userId;
+
     public void setCoordinates(double latitude, double longitude) {
         this.latitude = latitude;
         this.longitude = longitude;
@@ -40,11 +42,11 @@ public class Marker {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Marker marker = (Marker) o;
-        return Double.compare(marker.latitude, latitude) == 0 && Double.compare(marker.longitude, longitude) == 0 && id.equals(marker.id) && title.equals(marker.title) && Objects.equals(description, marker.description);
+        return Double.compare(marker.latitude, latitude) == 0 && Double.compare(marker.longitude, longitude) == 0 && markerId.equals(marker.markerId) && title.equals(marker.title) && Objects.equals(description, marker.description) && userId.equals(marker.userId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, latitude, longitude, title, description);
+        return Objects.hash(markerId, latitude, longitude, title, description, userId);
     }
 }

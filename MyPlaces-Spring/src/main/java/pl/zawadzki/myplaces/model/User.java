@@ -20,7 +20,7 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private Long userId;
 
     @NotBlank(message = "Username is required")
     private String username;
@@ -32,9 +32,11 @@ public class User {
     @NotEmpty
     private String role = "ROLE_USER";
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "userId")
     private Set<Marker> markers = new HashSet<>();
 
-    
-
+    public User(String username, String password) {
+        this.username = username;
+        this.password = password;
+    }
 }
