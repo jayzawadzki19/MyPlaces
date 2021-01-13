@@ -6,7 +6,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
-import pl.zawadzki.myplaces.dto.LoginRequest;
+import pl.zawadzki.myplaces.dto.LoginAndRegisterRequest;
 import pl.zawadzki.myplaces.dto.LoginResponse;
 
 @Service
@@ -20,12 +20,12 @@ public class LoginService {
     }
 
     /**
-     * Authenticates {@link pl.zawadzki.myplaces.model.User} with {@link LoginRequest}
+     * Authenticates {@link pl.zawadzki.myplaces.model.User} with {@link LoginAndRegisterRequest}
      *
-     * @param request {@link LoginRequest}
+     * @param request {@link LoginAndRegisterRequest}
      * @return {@link LoginResponse}
      */
-    public LoginResponse login(LoginRequest request) {
+    public LoginResponse login(LoginAndRegisterRequest request) {
         Authentication authentication = manager.authenticate(
                 new UsernamePasswordAuthenticationToken(
                         request.getUsername(),
