@@ -3,6 +3,7 @@ package pl.zawadzki.myplaces.model;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import pl.zawadzki.myplaces.enums.MarkerCategory;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
@@ -31,6 +32,8 @@ public class Marker {
     private String description;
 
     private Long userId;
+
+    private MarkerCategory category;
 
     public void setCoordinates(double latitude, double longitude) {
         this.latitude = latitude;
