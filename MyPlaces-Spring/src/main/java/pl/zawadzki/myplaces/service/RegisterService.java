@@ -19,13 +19,12 @@ public class RegisterService {
     }
 
 
-    public boolean isSignUpCompleted(LoginAndRegisterRequest request) {
+    public void signUp(LoginAndRegisterRequest request) {
         if (doesUserExist(request)) {
             throw new UserAlreadyExistsException("User " + request.getUsername() + " already exists!");
         }
         User newUser = new User(request.getUsername(), passwordEncoder.encode(request.getPassword()));
         userRepository.save(newUser);
-        return true;
     }
 
 
