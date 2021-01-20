@@ -2,7 +2,7 @@ package pl.zawadzki.myplaces.enums;
 
 public enum MarkerCategory {
     FOOD("Food"),
-    FREE_TIME("FreeTime"),
+    FREETIME("FreeTime"),
     OTHER("Other"),
     SERVICES("Services"),
     SHOPPING("Shopping"),
