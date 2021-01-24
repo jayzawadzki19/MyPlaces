@@ -30,7 +30,15 @@ export class MarkerService {
     return this.httpClient.get(this.reqUrl + `/byCategory/${category}`, this.httpHeaders);
   }
 
+  getOneMarker(markerId: number): Observable<any> {
+    return this.httpClient.get(this.reqUrl + `/getOne/${markerId}`, this.httpHeaders);
+  }
+
   saveNewMarker(marker: Marker): Observable<any> {
     return this.httpClient.post(this.reqUrl + '/new', marker, this.httpHeaders);
+  }
+
+  deleteMarker(markerId: number): Observable<any> {
+    return this.httpClient.delete(this.reqUrl + `/delete/${markerId}`, this.httpHeaders);
   }
 }
