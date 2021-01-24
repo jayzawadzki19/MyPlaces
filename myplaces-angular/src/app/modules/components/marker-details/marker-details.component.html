@@ -1,0 +1,70 @@
+<form [formGroup]="detailsForm">
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Marker details</h4>
+    <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <div class="form-group">
+
+      <!-- Title -->
+      <label for="titleInput">Marker title</label>
+      <div class="input-group">
+        <input id="titleInput"
+               [formControlName]="'title'"
+               class="form-control"
+               placeholder="Write a title"
+               name="title"
+               type="text">
+      </div>
+
+      <!-- Description -->
+      <div class="form-group">
+        <label for="description">Marker description</label>
+        <textarea class="form-control"
+                  [formControlName]="'description'"
+                  id="description"
+                  placeholder="Write a description"
+                  rows="3">
+        </textarea>
+      </div>
+
+      <!-- RadioBtn for category -->
+      <div class="form-check form-check-inline">
+        <input [formControlName]="'category'" class="form-check-input" type="radio" id="radioFood" value="FOOD">
+        <label class="form-check-label" for="radioFood">Food</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input [formControlName]="'category'" class="form-check-input" type="radio" id="radioFreeTime" value="FREETIME">
+        <label class="form-check-label" for="radioFreeTime">Free Time</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input [formControlName]="'category'" class="form-check-input" type="radio" id="radioServices" value="SERVICES">
+        <label class="form-check-label" for="radioServices">Services</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input [formControlName]="'category'" class="form-check-input" type="radio" id="radioShopping" value="SHOPPING">
+        <label class="form-check-label" for="radioShopping">Shopping</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input [formControlName]="'category'" class="form-check-input" type="radio" id="radioWork" value="WORK">
+        <label class="form-check-label" for="radioWork">Work</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input [formControlName]="'category'" class="form-check-input" type="radio" id="radioOther" value="OTHER">
+        <label class="form-check-label" for="radioOther">Other</label>
+      </div>
+
+      <!-- Footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" (click)="save()">Save</button>
+      </div>
+
+      <div class="login-failed" *ngIf='this.isError'>
+        <p class="login-failed-text">Title and Category fields are required!</p>
+      </div>
+
+    </div>
+  </div>
+</form>
