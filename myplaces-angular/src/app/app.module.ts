@@ -14,6 +14,7 @@ import {httpInterceptorProviders} from './core/service/interceptor';
 import {HttpClientModule} from '@angular/common/http';
 import {LocalStorageService, NgxWebstorageModule} from 'ngx-webstorage';
 import { MarkerDetailsComponent } from './modules/components/marker-details/marker-details.component';
+import { MarkersListComponent } from './modules/pages/markers-list/markers-list.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { MarkerDetailsComponent } from './modules/components/marker-details/mark
     LoginComponent,
     RegisterComponent,
     MarkerDetailsComponent,
+    MarkersListComponent,
   ],
   imports: [
     BrowserModule,
