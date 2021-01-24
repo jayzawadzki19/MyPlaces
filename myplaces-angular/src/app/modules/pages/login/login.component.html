@@ -1,0 +1,31 @@
+<form [formGroup]="loginForm" (ngSubmit)="login()">
+  <div class="form-group">
+    <label for="InputUsername">Username</label>
+    <input type="text" [formControlName]="'username'" class="form-control" id="InputUsername"
+           placeholder="Enter username" [ngClass]="loginForm.controls['username'].invalid ? 'is-invalid' : ''">
+    <label class="text-danger" *ngIf="loginForm.controls['username'].hasError('username')
+    && loginForm.get('username').touched " style="font-size: 13px">
+      Enter a valid username!
+    </label>
+  </div>
+
+  <div class="form-group errorHandler">
+    <label for="InputPassword">Password</label>
+    <input type="password" class="form-control" [formControlName]="'password'" id="InputPassword"
+           placeholder="Enter password">
+
+    <!--Error handling -->
+    <label class="text-danger" *ngIf="!loginForm.controls['password'].valid
+    && loginForm.get('password').touched" style="font-size: 13px">
+      Must have at least 5 characters!
+    </label>
+  </div>
+
+  <button type="submit" class="btn from-center btn-light mx-auto"
+          style="text-align:center;display:block;">
+    Login
+  </button>
+  <div class="login-failed" *ngIf='this.isError'>
+    <p class="login-failed-text">Login Failed. Please check your credentials and try again.</p>
+  </div>
+</form>
