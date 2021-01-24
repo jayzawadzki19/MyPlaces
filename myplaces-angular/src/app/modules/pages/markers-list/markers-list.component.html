@@ -1,0 +1,22 @@
+<div class="container" style="height: 93vh;">
+  <div class="row">
+    <div class="col markerCard">
+      <div class="row card-deck">
+        <div class="marker col-4" *ngFor="let marker of markers$">
+          <div class="card mb-4">
+            <div class="card-body">
+              <h6 class="card-title">{{marker.title}}</h6>
+              <p class="card-text"><small>{{marker.description}}</small>
+            </div>
+            <div class="card-footer">
+              <small class="text-muted col-2">{{marker.category}}</small>
+              <button class="btn show btn-sm col-2" (click)=getDetails(marker.markerId)>Edit</button>
+              <button class="btn delete btn-sm col-4" (click)=deleteMarker(marker.markerId)>Delete</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
