@@ -1,0 +1,41 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="z-index: 1">
+  <a class="navbar-brand" href="#">MyPlaces</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+      </li>
+      <div class="col">
+        <div ngbDropdown class="d-inline-block">
+          <button class="btn btn-outline-primary" id="dropdownBasic1" [disabled]="!isLoggedIn" ngbDropdownToggle>Marker Categories: {{category}}</button>
+          <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+            <button ngbDropdownItem (click)="changeCategory(markerCategory.FOOD)">Food</button>
+            <button ngbDropdownItem (click)="changeCategory(markerCategory.FREETIME)">Free time</button>
+            <button ngbDropdownItem (click)="changeCategory(markerCategory.SERVICES)">Services</button>
+            <button ngbDropdownItem (click)="changeCategory(markerCategory.SHOPPING)">Shopping</button>
+            <button ngbDropdownItem (click)="changeCategory(markerCategory.WORK)">Work</button>
+            <button ngbDropdownItem (click)="changeCategory(markerCategory.OTHER)">Other</button>
+            <hr>
+            <button ngbDropdownItem (click)="changeCategory(markerCategory.ALL)">All</button>
+          </div>
+        </div>
+      </div>
+    </ul>
+
+    <!-- Fix problems with routerlink -->
+    <div class="flex-grow-1 float-right font-weight-light" *ngIf="!isLoggedIn; else elseBlock">
+      <a href="/register" class="btn btn-lg btn-outline-primary signup float-right" >Sign Up</a>
+      <a href="/login" class="btn btn-lg btn-outline-primary login float-right">Login</a>
+    </div>
+    <ng-template #elseBlock>
+      <div class="flex-grow-1 float-right font-weight-light">
+        <a class="btn btn-lg btn-outline-primary logout float-right" (click)="logout()" >Logout</a>
+        <a href="/myMarkers" class="btn btn-lg btn-outline-primary markers float-right" >My Markers</a>
+      </div>
+    </ng-template>
+  </div>
+</nav>
