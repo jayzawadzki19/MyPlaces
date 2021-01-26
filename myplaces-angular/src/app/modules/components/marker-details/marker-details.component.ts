@@ -52,6 +52,8 @@ export class MarkerDetailsComponent implements OnInit {
       description: new FormControl(this.editedMarker.description),
       category: new FormControl(this.editedMarker.category, Validators.required)
     });
+
+    // Subscribes changing marker data
     this.detailsService.currentDetailsFinisher.subscribe(c => this.isSaved = c);
   }
 
@@ -59,6 +61,7 @@ export class MarkerDetailsComponent implements OnInit {
     this.detailsService.finishDetails(f);
   }
 
+  // Saves info about marker, if marker exists in database, updates it's details
   save() {
     if (this.detailsForm.invalid) {
       this.isError = true;
@@ -81,6 +84,7 @@ export class MarkerDetailsComponent implements OnInit {
     }
   }
 
+  // Uses service to save new marker to database
   private saveNewMarker(marker: Marker) {
     this.markerService.saveNewMarker(marker).subscribe(data => {
       this.saveDetails(true);

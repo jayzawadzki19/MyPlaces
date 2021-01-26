@@ -38,10 +38,14 @@ export class MapComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.initMap();
+
+    // Subscribes changing category
     this.subscription = this.detailsService.currentCategory.subscribe(c => {
       this.category = c;
       this.getMarkers(c);
     });
+
+    // Subscribes editing marker details
     this.savingSub = this.detailsService.currentDetailsFinisher.subscribe(c => {
       if (c) {
         this.getMarkers(this.category);
@@ -61,8 +65,10 @@ export class MapComponent implements OnInit, OnDestroy {
       zoom: 3
     }).invalidateSize();
 
+    // Adds layer to map
     this.streetMapLayer.addTo(this.map);
 
+    // Sets click event logic, creates marker on maps
     this.map.on('click', e => {
       if (this.authService.isLoggedIn()) {
         this.open(e.latlng.lat, e.latlng.lng);
@@ -77,6 +83,7 @@ export class MapComponent implements OnInit, OnDestroy {
     });
   }
 
+  // Gets markers based on provided category
   getMarkers(category: MarkerCategory) {
     this.removeMarkers();
     if (category === MarkerCategory.ALL) {
@@ -121,6 +128,7 @@ export class MapComponent implements OnInit, OnDestroy {
     this.markerLayer.addTo(this.map);
   }
 
+  // Sets icon options for marker based on category
   private getIconOptionsBasedOnCategory(c: MarkerCategory): L.Icon {
     let iconUrl: string;
     const cat = MarkerCategory[c];
@@ -149,7 +157,8 @@ export class MapComponent implements OnInit, OnDestroy {
         iconUrl = 'src/assets/marker/marker-icon-other.png';
         break;
       }
-      default: iconUrl = 'src/assets/marker/marker-icon-other.png';
+      default:
+        iconUrl = 'src/assets/marker/marker-icon-other.png';
 
     }
 

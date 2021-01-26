@@ -12,6 +12,8 @@ import {mark} from '@angular/compiler-cli/src/ngtsc/perf/src/clock';
 export class MarkerService {
 
   reqUrl = 'http://localhost:8080/api/markers';
+
+  // creates authorization header
   httpHeaders = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json',
@@ -22,22 +24,27 @@ export class MarkerService {
   constructor(private httpClient: HttpClient, private localStorage: LocalStorageService) {
   }
 
+  // Returns all markers
   getAllMarkers(): Observable<any> {
     return this.httpClient.get(this.reqUrl + '/all', this.httpHeaders);
   }
 
+  // Returns markers by category
   getMarkersByCategory(category: string): Observable<any> {
     return this.httpClient.get(this.reqUrl + `/byCategory/${category}`, this.httpHeaders);
   }
 
+  // Returns marker with given id
   getOneMarker(markerId: number): Observable<any> {
     return this.httpClient.get(this.reqUrl + `/getOne/${markerId}`, this.httpHeaders);
   }
 
+  // Saves new marker into database
   saveNewMarker(marker: Marker): Observable<any> {
     return this.httpClient.post(this.reqUrl + '/new', marker, this.httpHeaders);
   }
 
+  // Deletes marker from database
   deleteMarker(markerId: number): Observable<any> {
     return this.httpClient.delete(this.reqUrl + `/delete/${markerId}`, this.httpHeaders);
   }

@@ -34,14 +34,17 @@ export class NavbarComponent implements OnInit, OnDestroy {
     this.subscription.unsubscribe();
   }
 
+  // Allows to change category inside dropdown
   changeCategory(category: MarkerCategory) {
     this.detailsService.changeCategory(category);
   }
 
+  // Returns type of MarkerCategory enum
   public get markerCategory(): typeof MarkerCategory {
     return MarkerCategory;
   }
 
+  // Logouts user
   logout() {
     this.authService.logout();
     this.isLoggedIn = false;

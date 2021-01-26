@@ -72,7 +72,7 @@ export class MarkersListComponent implements OnInit, OnDestroy {
     });
   }
 
-
+  // Receives marker details, opens modal with given info
   getDetails(markerId: number) {
     this.markerService.getOneMarker(markerId).subscribe(data => {
       this.markerDetails = data;
@@ -82,6 +82,7 @@ export class MarkersListComponent implements OnInit, OnDestroy {
     });
   }
 
+  // Removes marker
   deleteMarker(markerId: number) {
     this.markerService.deleteMarker(markerId).subscribe(data => {
       this.getMarkers(this.category);
@@ -90,6 +91,7 @@ export class MarkersListComponent implements OnInit, OnDestroy {
     });
   }
 
+  // Opens modal, provides marker details to modal class
   open(m: Marker) {
     const modalRef = this.modalService.open(MarkerDetailsComponent, {size: 'lg'});
     modalRef.componentInstance.editedMarker.title = m.title;

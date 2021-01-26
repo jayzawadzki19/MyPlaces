@@ -32,6 +32,7 @@ export class LoginComponent implements OnInit {
     });
   }
 
+  // Provides login activity
   login() {
     this.credentials.username = this.loginForm.get('username').value;
     this.credentials.password = this.loginForm.get('password').value;
