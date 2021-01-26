@@ -1,10 +1,8 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import * as L from 'leaflet';
 import {Observable} from 'rxjs';
 import {LocalStorageService} from 'ngx-webstorage';
 import {Marker} from '../../../shared/model/marker/marker';
-import {mark} from '@angular/compiler-cli/src/ngtsc/perf/src/clock';
 
 @Injectable({
   providedIn: 'root'

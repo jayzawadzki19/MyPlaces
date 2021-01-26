@@ -6,9 +6,7 @@ import {Subscription, throwError} from 'rxjs';
 import {MarkerDetailsService} from '../../../core/service/marker/marker-details.service';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
 import {MarkerDetailsComponent} from '../../components/marker-details/marker-details.component';
-import {mark} from '@angular/compiler-cli/src/ngtsc/perf/src/clock';
-import {marker} from 'leaflet';
-import {errorObject} from 'rxjs/internal-compatibility';
+
 
 @Component({
   selector: 'app-markers-list',

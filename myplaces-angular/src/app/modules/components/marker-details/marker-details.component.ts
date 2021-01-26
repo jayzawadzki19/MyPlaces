@@ -5,7 +5,6 @@ import {Marker} from '../../../shared/model/marker/marker';
 import {throwError} from 'rxjs';
 import {MarkerService} from '../../../core/service/marker/marker.service';
 import {MarkerDetailsService} from '../../../core/service/marker/marker-details.service';
-import {MarkerCategory} from '../../../shared/model/marker/marker-category.enum';
 
 @Component({
   selector: 'app-marker-details',
