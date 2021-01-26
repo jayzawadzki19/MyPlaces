@@ -31,7 +31,8 @@ export class RegisterComponent implements OnInit {
       ])),
       password: new FormControl('', Validators.compose([
         Validators.required,
-        Validators.minLength(5)])),
+        Validators.minLength(5),
+        Validators.maxLength(16)])),
     });
   }
 
