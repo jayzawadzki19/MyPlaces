@@ -6,12 +6,14 @@ import {LocalStorageService} from 'ngx-webstorage';
 import {LoginResponse} from '../../../shared/model/auth/login-response';
 import {CookieService} from 'ngx-cookie-service';
 import {map} from 'rxjs/operators';
+import {environment} from '../../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
+  baseUrl = environment.baseUrl;
   credentials: Credentials;
   token: string;
 
@@ -25,7 +27,7 @@ export class AuthService {
   }
 
   signUp(credentials: Credentials): Observable<any> {
-    return this.http.post('http://localhost:8080/api/auth/register', credentials);
+    return this.http.post(this.baseUrl + 'api/auth/register', credentials);
   }
 
   login(credentials: Credentials): Observable<LoginResponse> {
@@ -37,7 +39,7 @@ export class AuthService {
       })
     };
 
-    return this.http.post<LoginResponse>('http://localhost:8080/api/auth/login', credentials, httpHeaders)
+    return this.http.post<LoginResponse>(this.baseUrl + 'api/auth/login', credentials, httpHeaders)
       .pipe(map(data => {
         this.credentials = credentials;
         this.localStorage.store('username', data.username);

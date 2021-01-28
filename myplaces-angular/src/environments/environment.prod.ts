@@ -1,3 +1,5 @@
 export const environment = {
-  production: true
+  production: true,
+  // Stores url of the backend application, currently hidden
+  baseUrl: 'springAppUrl'
 };

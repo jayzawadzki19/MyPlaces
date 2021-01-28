@@ -3,13 +3,14 @@ import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {LocalStorageService} from 'ngx-webstorage';
 import {Marker} from '../../../shared/model/marker/marker';
+import {environment} from '../../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class MarkerService {
 
-  reqUrl = 'http://localhost:8080/api/markers';
+  reqUrl = environment.baseUrl + 'api/markers';
 
   // creates authorization header
   httpHeaders = {
